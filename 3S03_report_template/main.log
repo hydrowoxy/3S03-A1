@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.21)  20 FEB 2026 16:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.21)  20 FEB 2026 16:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1299,12 +1299,13 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 6.
+(main.out) (main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
 Package biblatex Info: Trying to load language 'USenglish'...
 Package biblatex Info: ... file 'USenglish.lbx' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex/lbx\USenglish.lbx
+ (C:\Program Files\MiKTeX\tex/latex/biblatex/lbx\USenglish.lbx
 File: USenglish.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
 Package biblatex Info: Trying to load language 'american'...
 Package biblatex Info: ... file 'american.lbx' found.
@@ -1330,12 +1331,11 @@ Package biblatex Info: Automatic encoding selection.
 \openout4 = `main.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'main.bbl' not found.
-
-No file main.bbl.
+Package biblatex Info: ... file 'main.bbl' found.
+ (main.bbl)
 Package biblatex Info: Reference section=0 on input line 6.
 Package biblatex Info: Reference segment=0 on input line 6.
-(C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+ (C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
  (C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
 Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
@@ -1409,14 +1409,7 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 28
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1
 
-{C:/Users/salee/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]) (content.tex
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 2.
- (C:\Program Files\MiKTeX\tex/latex/lm\t1lmss.fd
-File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 2.
-)
+{C:/Users/salee/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]) (content.tex)
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1426,39 +1419,24 @@ l.16 \end{document}
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  777E4392A9984189B6E8FD5686F5B8DA;210.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                main
-(biblatex)                and rerun LaTeX afterwards.
-
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: C86BB93442B53FD036B5CE10FAA0F9F4;1151.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39068 strings out of 467871
- 704114 string characters out of 5428443
- 1513585 words of memory out of 5000000
- 67311 multiletter control sequences out of 15000+600000
- 694440 words of font info for 89 fonts, out of 8000000 for 9000
+ 39040 strings out of 467871
+ 703680 string characters out of 5428443
+ 1513715 words of memory out of 5000000
+ 67282 multiletter control sequences out of 15000+600000
+ 677547 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  137i,11n,156p,1251b,1785s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\salee\AppData\Local\MiKTeX\fonts/pk/ljfour/public/fdsymbol/dpi657\FdSymbolA-Book.pk><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsso10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (2 pages, 185091 bytes).
+<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (2 pages, 143578 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 5 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
