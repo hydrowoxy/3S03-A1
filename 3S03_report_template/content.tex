@@ -1,4 +1,156 @@
 \section{Task 1 - Testing with generative AI}
+\subsection{a)} 
+
+I asked ChatGPT 5.2 to specify three types of tests for the game described above.
+
+\vspace{20pt}
+
+The specific prompt I used was:
+
+\vspace{10pt}
+
+"Suppose I am developing an action-adventure game such that:
+a) players explore a post-apocalyptic version of McMaster University; b) up to eight players 
+may be accosted by zombies, mutated professors, angry Deans, killer squirrels, and more; c) 
+gameplay can be both competitive and cooperative; and d) the game will be released on the 
+PS5, Xbox Series X, Nintendo Switch and Sega Genesis (which is 16-bit and hasn't been 
+manufactured since 1997). Specify three types of tests for such a game."
+
+\vspace{20pt}
+
+The response I recieved was as follows (it originally included more emojis and markdown formatting,
+which I removed (and re-formatted) so that my document would compile and be legible):
+
+\vspace{10pt}
+
+"For a game like this — especially one that spans \textbf{modern consoles and a 16-bit relic like the Sega Genesis} — testing needs to cover functionality, performance, and platform constraints very carefully.
+
+Here are \textbf{three distinct and appropriate types of testing}:
+
+1. Functional Testing (Gameplay \& Mechanics)
+
+\textbf{Purpose:} Ensure the game works according to design.
+
+This would verify:
+
+\begin{itemize}
+    \item Players can explore the post-apocalyptic McMaster campus without falling through geometry
+    \item Zombies, mutated professors, angry Deans, and killer squirrels spawn correctly
+    \item Combat, health, inventory, and abilities function as intended
+    \item Competitive and cooperative modes behave correctly
+    \item Up to eight players connect and interact properly
+\end{itemize}
+
+Examples of functional test cases:
+
+\begin{itemize}
+    \item If 8 players join a session, all characters spawn correctly.
+    \item If a Dean is defeated, loot drops trigger.
+    \item Friendly fire behaves correctly depending on mode (co-op vs competitive).
+    \item Save/load restores correct state.
+\end{itemize}
+
+This ensures the \textbf{core gameplay logic works}.
+
+2. Performance \& Stress Testing (Multiplayer \& AI Load)
+
+\textbf{Purpose:} Ensure the game runs smoothly under load.
+
+Your game supports:
+
+\begin{itemize}
+    \item Up to 8 players
+    \item Multiple enemy types
+    \item Large explorable campus
+    \item Both modern and legacy hardware
+\end{itemize}
+
+Testing would include:
+
+\begin{itemize}
+    \item Frame rate stability (60 FPS on PS5/Xbox, acceptable performance on Switch)
+    \item Mass zombie swarm scenarios
+    \item Network latency under 8-player online sessions
+    \item Memory usage limits
+\end{itemize}
+
+Especially important:
+
+\begin{itemize}
+    \item The \textbf{Nintendo Switch} has weaker hardware.
+    \item The \textbf{Sega Genesis} has extreme memory and CPU constraints (16-bit, limited RAM, cartridge storage).
+\end{itemize}
+
+Stress testing would reveal:
+
+\begin{itemize}
+    \item Frame drops when 50 squirrels attack simultaneously
+    \item Network desync in competitive mode
+    \item AI pathfinding breakdowns under heavy load
+\end{itemize}
+
+3. Compatibility \& Platform Testing (Cross-Console + 16-bit Constraints)
+
+\textbf{Purpose:} Ensure the game works correctly across very different hardware environments.
+
+You are releasing on:
+
+\begin{itemize}
+    \item PlayStation 5
+    \item Xbox Series X
+    \item Nintendo Switch
+    \item Sega Genesis
+\end{itemize}
+
+Key concerns:
+
+Modern Consoles (PS5 / Xbox Series X)
+
+\begin{itemize}
+    \item 4K rendering compatibility
+    \item Ray tracing support (if implemented)
+    \item SSD load speed optimization
+    \item Controller haptics
+\end{itemize}
+
+Nintendo Switch
+
+\begin{itemize}
+    \item Lower resolution scaling
+    \item Docked vs handheld mode behavior
+    \item Limited GPU power
+\end{itemize}
+
+Sega Genesis
+
+\begin{itemize}
+    \item 16-bit graphics limitations
+    \item Severe RAM restrictions
+    \item Cartridge size constraints
+    \item No modern multiplayer networking
+    \item Likely redesigned gameplay mechanics
+\end{itemize}
+
+Compatibility testing ensures:
+
+\begin{itemize}
+    \item UI scaling works at different resolutions
+    \item Input mapping works on each controller
+    \item Save systems comply with platform standards
+    \item The Genesis version doesn’t exceed hardware limits
+\end{itemize}
+
+Summary
+
+The three appropriate testing types are:
+
+\begin{enumerate}
+    \item \textbf{Functional Testing} – Does the game behave correctly?
+    \item \textbf{Performance \& Stress Testing} – Does it run smoothly under load?
+    \item \textbf{Compatibility/Platform Testing} – Does it work properly across PS5, Xbox, Switch, and Genesis?
+\end{enumerate}
+
+Given the extreme hardware diversity (especially including a 1990s 16-bit console), \textbf{platform compatibility testing would be especially critical} for this project."
 
 \section{Task 2 - Testing with Junit}
 
