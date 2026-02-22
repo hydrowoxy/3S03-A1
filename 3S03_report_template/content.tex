@@ -337,7 +337,20 @@ path is reached. However, since \texttt{y} is not present in the array, both
 implementations correctly return \texttt{-1}, so no failure occurs.
 
 \subsubsection{e)}
-werrg
+
+For the given test case \texttt{x = [2,3,5]; y = 2; Expected = 0}, the first error state
+occurs when \texttt{i = 0} and the loop condition \texttt{i > 0} evaluates to false.
+
+
+\begin{itemize}
+    \item In the provided incorrect implementation, the loop terminates and the program 
+    counter exits the loop body
+    \item In the corrected implementation (with \texttt{i >= 0}) the program counter 
+    would enter the loop and check \texttt{x[0]}. 
+\end{itemize}
+
+Thus, the first error state is the incorrect control-flow
+decision at \texttt{i = 0}.
 
 \subsection{Program 2}
 \subsubsection{a)}
