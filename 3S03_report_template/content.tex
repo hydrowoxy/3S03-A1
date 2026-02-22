@@ -322,6 +322,19 @@ The method returns before reaching index 0, so the execution path is identical
 to that of the corrected implementation. Therefore, no error state is reached.
 
 \subsubsection{d)}
+A test case that results in an error state but not a failure is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{x = [1,2,3]; y = 5; Expected = -1}.   
+
+}\end{adjustwidth}
+
+The faulty loop condition \texttt{i > 0} causes the loop to terminate
+when \texttt{i = 0} without checking index 0. The corrected implementation would
+evaluate the condition at \texttt{i = 0} and check \texttt{x[0]}, so the execution
+paths differ. Therefore, an incorrect internal state/control flow/program counter 
+path is reached. However, since \texttt{y} is not present in the array, both 
+implementations correctly return \texttt{-1}, so no failure occurs.
 
 \subsubsection{e)}
 werrg
