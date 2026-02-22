@@ -164,12 +164,12 @@ Given the extreme hardware diversity (especially including a 1990s 16-bit consol
 but not granularity (unit, integration, system).
 
 We have seen in class that unit and integration testing are often conflated. This is
-bad because the distinction affects feedback speed, debugging difficulty, and test design. The AI response not only fails to make this distinction,
-but also fails to even mention unit testing; it is unclear whether the tests it suggests
-are to be implemented as unit, integration or system tests (though it seems the AI is
-relying only on system-level tests based on the descriptions provided). This is a 
-significant omission, as unit tests are crucial for verifying the correctness of 
-individual components in isolation. 
+bad because the distinction affects feedback speed, debugging difficulty, and test design. 
+The AI response not only fails to make this distinction, but also fails to even mention 
+unit testing; it is unclear whether the tests it suggests are to be implemented as unit, 
+integration or system tests (though it seems the AI is relying only on system-level 
+tests based on the descriptions provided). This is a significant omission, as unit 
+tests are crucial for verifying the correctness of individual components in isolation. 
 
 This is unhelpful because it does not indicate how the test suite should be structured 
 in practice or how trade-offs between speed, isolation, and scope should be managed. We
@@ -229,7 +229,7 @@ these scenarios into implementable test cases with well-defined expectations.
     take damage (covering both decision outcomes).
 
     \item Simulate two players in the same multiplayer session using a
-    stubbed communication layer (a fake object that simulates real network 
+    test double (stub/fake network transport object that simulates real network 
     communication). When Player A defeats a zombie, verify that Player B's 
     client updates to reflect the zombie's removal.
 
@@ -258,7 +258,7 @@ fewfw
 \subsubsection{d)}
 fewfe
 \subsubsection{e)}
-fewfe
+werrg
 
 \subsection{Program 2}
 \subsubsection{a)}
