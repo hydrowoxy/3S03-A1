@@ -339,14 +339,9 @@ implementations correctly return \texttt{-1}, so no failure occurs.
 \subsubsection{e)}
 
 For the given test case, the first error state occurs when \texttt{i = 0} 
-and the loop condition \texttt{i > 0} evaluates to false.
-
-\begin{itemize}
-    \item In the provided incorrect implementation, the loop terminates and the program 
-    counter exits the loop body
-    \item In the corrected implementation (with \texttt{i >= 0}) the program counter 
-    would enter the loop and check \texttt{x[0]}. 
-\end{itemize}
+and the loop condition \texttt{i > 0} evaluates to false. In the provided incorrect 
+implementation, the loop terminates and the program counter exits the loop body, whereas 
+in the corrected implementation (with \texttt{i >= 0}) the program counter would enter the loop and check \texttt{x[0]}. 
 
 Thus, the first error state is the incorrect control-flow
 decision at \texttt{i = 0}.
@@ -399,28 +394,53 @@ for (int i = x.length - 1; i >= 0; i--)
 \subsubsection{b)}
 A test case that does not execute the fault is:
 \begin{adjustwidth}{2em}{0pt}{
+    \texttt{x = [1,2,3]; Expected = -1}.
+}
+\end{adjustwidth}
 
-    \texttt{test}   
-
-}\end{adjustwidth}
+The return statement inside the loop is only executed if \texttt{x[i] == 0}. 
+Since the array contains no zeros, the condition is never true and the faulty 
+return statement is never executed. The loop completes normally and the method
+returns \texttt{-1}.
 
 \subsubsection{c)}
 A test case that executes the fault but does not result in an error state is:
 \begin{adjustwidth}{2em}{0pt}{
+    \texttt{x = [1,0,3]; Expected = 1}.
+}
+\end{adjustwidth}
 
-    \texttt{test}   
-
-}\end{adjustwidth}
+The faulty return statement inside the loop is executed when
+\texttt{i = 1} and \texttt{x[1] == 0}. However, since this is the
+only zero in the array, the first occurrence is also the last
+occurrence. Therefore, the execution path and returned value are
+the same as in the corrected implementation, and no error state
+is reached.
 
 \subsubsection{d)}
-A test case that results in an error state but not a failure is:
-\begin{adjustwidth}{2em}{0pt}{
+This is not possible.
 
-    \texttt{test}   
+The fault in this program is the premature \texttt{return} statement inside
+the loop, which causes the method to return the first occurrence of
+\texttt{0} rather than the last. If this premature return produces an
+incorrect index, then the returned value differs from the specification,
+which is an observable failure. Conversely, if the returned index is correct (for example, when the array
+contains exactly one zero), then the internal state is consistent with the
+specification and no error state is reached.
 
-}\end{adjustwidth}
+Therefore, any error state caused by this fault necessarily results in a
+failure, and an error state without a failure cannot occur for this program.
 
 \subsubsection{e)}
+For the given test case \texttt{x = [0,1,0]; Expected = 2}, the first error state 
+occurs at \texttt{i = 0} when the condition \texttt{x[0] == 0} evaluates to true 
+and the method takes the \texttt{return i} branch. At this point, the program 
+counter exits the loop and returns \texttt{0}, whereas a correct implementation 
+would continue iterating to determine whether a later zero exists (and would ultimately 
+return \texttt{2}). 
+
+Therefore, the first error state is the premature control-flow decision 
+to return at \texttt{i = 0}.
 
 \subsection{Program 3}
 \subsubsection{a)}
@@ -432,6 +452,8 @@ A test case that does not execute the fault is:
 
 }\end{adjustwidth}
 
+Explanation
+
 \subsubsection{c)}
 A test case that executes the fault but does not result in an error state is:
 \begin{adjustwidth}{2em}{0pt}{
@@ -440,6 +462,8 @@ A test case that executes the fault but does not result in an error state is:
 
 }\end{adjustwidth}
 
+Explanation
+
 \subsubsection{d)}
 A test case that results in an error state but not a failure is:
 \begin{adjustwidth}{2em}{0pt}{
@@ -447,6 +471,8 @@ A test case that results in an error state but not a failure is:
     \texttt{test}   
 
 }\end{adjustwidth}
+
+Explanation
 
 \subsubsection{e)}
 
