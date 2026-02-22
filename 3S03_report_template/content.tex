@@ -188,8 +188,35 @@ testing or how to prioritize test cases.
 
 \end{enumerate}
 
+\subsection{c)} Two good, valid, or helpful aspects of the response are:
 
+\begin{enumerate}
+\item It recognizes system-level risks.
 
+The response lists performance issues, hardware constraints, and
+multiplayer load as potential failure sources. These issues typically
+emerge when multiple components interact or when the system is exercised
+in realistic operating conditions, rather than at the level of isolated
+units.
+
+This is helpful because it acknowledges that some failures only become
+visible when the system is evaluated as a whole. We can use this to identify 
+system testing needs.
+
+\item Concrete examples of test cases are provided for each type of testing.
+
+The response includes specific example scenarios (eight players joining a
+session, friendly fire toggling, stress-testing large enemy swarms).
+Clear and expressive tests are valuable because they make expected behavior
+explicit and easier to reason about. By describing concrete scenarios rather
+than only abstract test categories, the response clarifies the intended
+behaviors that should be exercised.
+
+This is helpful because clearer behavioral intent makes it easier to design
+tests that meaningfully verify system behavior. We can more directly translate
+these scenarios into implementable test cases with well-defined expectations.
+
+\end{enumerate}
 
 \section{Testing with Junit}
 
