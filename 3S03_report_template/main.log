@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.21)  21 FEB 2026 20:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.21)  21 FEB 2026 21:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1423,29 +1423,72 @@ Overfull \hbox (4.8279pt too wide) in paragraph at lines 96--97
 []\T1/lmr/bx/n/12 Purpose: \T1/lmr/m/n/12 En-sure the game works cor-rectly across very dif-fer-ent hard-ware en-vi-ron-ments. 
  []
 
-[2] [3] [4]) [5] (main.aux)
+[2] [3] [4]
+LaTeX Font Info:    Font shape `U/FdSymbolA/m/n' will be
+(Font)              scaled to size 12.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolA/m/n' will be
+(Font)              scaled to size 9.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolA/m/n' will be
+(Font)              scaled to size 7.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolE/m/n' will be
+(Font)              scaled to size 12.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolE/m/n' will be
+(Font)              scaled to size 9.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolE/m/n' will be
+(Font)              scaled to size 7.0pt on input line 235.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 235.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 235.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolB/m/n' will be
+(Font)              scaled to size 12.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolB/m/n' will be
+(Font)              scaled to size 9.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolB/m/n' will be
+(Font)              scaled to size 7.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolC/m/n' will be
+(Font)              scaled to size 12.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolC/m/n' will be
+(Font)              scaled to size 9.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolC/m/n' will be
+(Font)              scaled to size 7.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolD/m/n' will be
+(Font)              scaled to size 12.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolD/m/n' will be
+(Font)              scaled to size 9.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolD/m/n' will be
+(Font)              scaled to size 7.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 235.
+LaTeX Font Info:    Font shape `U/FdSymbolF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 235.
+) [5] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B91BE625BBCF5473D006F321F684966B;1091.
+(rerunfilecheck)             Checksum: 3B1765239851499AC95F9E24348E9AA6;1161.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39099 strings out of 467871
- 704881 string characters out of 5428443
+ 39143 strings out of 467871
+ 705489 string characters out of 5428443
  1517718 words of memory out of 5000000
- 67322 multiletter control sequences out of 15000+600000
- 680920 words of font info for 85 fonts, out of 8000000 for 9000
+ 67356 multiletter control sequences out of 15000+600000
+ 699349 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  137i,12n,156p,1251b,1785s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (6 pages, 190523 bytes).
+ <C:\Users\salee\AppData\Local\MiKTeX\fonts/pk/ljfour/public/fdsymbol/dpi720\FdSymbolC-Book.pk><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (6 pages, 193612 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 127 PDF objects out of 1000 (max. 8388607)
+ 25 named destinations out of 1000 (max. 500000)
+ 85 words of extra memory for PDF output out of 10000 (max. 10000000)
 

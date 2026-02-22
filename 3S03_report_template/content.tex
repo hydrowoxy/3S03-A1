@@ -20,7 +20,7 @@ Specify three types of tests for such a game.
 
 \vspace{20pt}
 
-The response I recieved was as follows (it originally included more emojis and markdown formatting,
+The response I received was as follows (it originally included more emojis and markdown formatting,
 which I removed (and re-formatted) so that my document would compile and be legible):
 
 \vspace{10pt}
@@ -217,6 +217,33 @@ tests that meaningfully verify system behavior. We can more directly translate
 these scenarios into implementable test cases with well-defined expectations.
 
 \end{enumerate}
+
+\subsection{d)} Considering the above, three tests I would suggest are:
+
+\begin{enumerate}
+    \item Given the combat damage logic with game mode set to cooperative,
+    verify that when Player A attacks Player B, Player B does not take damage; 
+    and when the session is switched to competitive mode, Player B does
+    take damage (covering both decision outcomes).
+
+    \item Simulate two players in the same multiplayer session using a
+    stubbed communication layer (a controlled fake object that replaces
+    real network communication). When Player A defeats a zombie,
+    verify that Player B's client updates to reflect the zombie's removal.
+
+    \item On each target platform build, run the following smoke test:
+    launch $\rightarrow$ start/join session $\rightarrow$ combat event
+    $\rightarrow$ exit session, and verify that no crashes or state
+    inconsistencies occur.
+
+\end{enumerate}
+
+I prefer these tests because they explicitly cover unit, integration, and system
+granularity while including a measurable adequacy goal (exercising both decision outcomes)
+for core logic. This results in fast, deterministic tests for core gameplay defects 
+while keeping broad smoke tests to catch platform-specific and full-system 
+failures.
+
 
 \section{Testing with Junit}
 
