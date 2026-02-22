@@ -443,7 +443,66 @@ Therefore, the first error state is the premature control-flow decision
 to return at \texttt{i = 0}.
 
 \subsection{Program 3}
+
 \subsubsection{a)}
+The method iterates through the array from the first index to the last index and increments
+\texttt{count} whenever the condition \texttt{x[i] >= 0} is true. This is problematic because
+the method is intended to count positive integers, but \texttt{x[i] >= 0} will also count
+\texttt{0} as positive.
+
+Using the given test as an example:
+
+\begin{adjustwidth}{2em}{0pt}{
+
+    We pass \texttt{x = [-4,2,0,2]}.
+
+    \texttt{x.length = 4}, so the loop runs for \texttt{i = 0,1,2,3}.
+
+    The method initializes \texttt{count = 0}.
+
+    At \texttt{i = 0}, it checks if \texttt{x[0] >= 0}.  
+
+    \texttt{x[0] = -4}, so \texttt{-4 >= 0} is false and \texttt{count} remains \texttt{0}.
+
+    At \texttt{i = 1}, it checks if \texttt{x[1] >= 0}.  
+
+    \texttt{x[1] = 2}, so \texttt{2 >= 0} is true and \texttt{count} is incremented to \texttt{1}.
+
+    At \texttt{i = 2}, it checks if \texttt{x[2] >= 0}.  
+
+    \texttt{x[2] = 0}, so \texttt{0 >= 0} is true and \texttt{count} is incremented to \texttt{2}.  
+
+    This increment is incorrect because zero is not positive, so the correct implementation
+    would have left \texttt{count} as \texttt{1} here.
+
+    At \texttt{i = 3}, it checks if \texttt{x[3] >= 0}.  
+
+    \texttt{x[3] = 2}, so \texttt{2 >= 0} is true and \texttt{count} is incremented to \texttt{3}.
+
+    The loop terminates after \texttt{i = 3} and the method returns \texttt{count = 3}.
+
+    The correct number of positive integers in \texttt{x} is \texttt{2}, so the method fails by
+    returning \texttt{3}.
+
+}\end{adjustwidth}
+
+Fault:
+
+\begin{adjustwidth}{2em}{0pt}{
+
+    The fault is in the conditional \texttt{x[i] >= 0}, which incorrectly counts \texttt{0}
+    as a positive number.
+
+}\end{adjustwidth}
+
+Proposed modification to the code:
+
+\begin{adjustwidth}{2em}{0pt}{
+
+    Change the condition to \texttt{x[i] > 0} so that only strictly positive integers increment
+    \texttt{count}.
+
+}\end{adjustwidth}
 \subsubsection{b)}
 A test case that does not execute the fault is:
 \begin{adjustwidth}{2em}{0pt}{
