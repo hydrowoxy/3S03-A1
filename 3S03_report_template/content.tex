@@ -1,29 +1,28 @@
 \section{Testing with generative AI}
 \subsection{a)} 
 
-I asked ChatGPT 5.2 to specify three types of tests for the game described above.
-
-\vspace{20pt}
+I asked ChatGPT to specify three types of tests for the game described above.
 
 The specific prompt I used was:
 
-\vspace{10pt}
-
+\begin{adjustwidth}{2em}{0pt}
+{
 Suppose I am developing an action-adventure game such that:
 a) players explore a post-apocalyptic version of McMaster University; b) up to eight players 
 may be accosted by zombies, mutated professors, angry Deans, killer squirrels, and more; c) 
 gameplay can be both competitive and cooperative; and d) the game will be released on the 
 PS5, Xbox Series X, Nintendo Switch and Sega Genesis (which is 16-bit and hasn't been 
-manufactured since 1997). 
+manufactured since 1997).
 
 Specify three types of tests for such a game.
-
-\vspace{20pt}
+}
+\end{adjustwidth}
 
 The response I received was as follows (it originally included more emojis and markdown formatting,
 which I removed (and re-formatted) so that my document would compile and be legible):
 
-\vspace{10pt}
+\begin{adjustwidth}{2em}{0pt}
+{
 
 For a game like this — especially one that spans \textbf{modern consoles and a 16-bit relic like the Sega Genesis} — testing needs to cover functionality, performance, and platform constraints very carefully.
 
@@ -155,6 +154,9 @@ The three appropriate testing types are:
 Given the extreme hardware diversity (especially including a 1990s 16-bit console), 
 \textbf{platform compatibility testing would be especially critical} for this project.
 
+}
+\end{adjustwidth}
+
 \subsection{b)} Two poor, incorrect, or unclear aspects of the response are:
 
 \begin{enumerate}
@@ -227,9 +229,9 @@ these scenarios into implementable test cases with well-defined expectations.
     take damage (covering both decision outcomes).
 
     \item Simulate two players in the same multiplayer session using a
-    stubbed communication layer (a controlled fake object that replaces
-    real network communication). When Player A defeats a zombie,
-    verify that Player B's client updates to reflect the zombie's removal.
+    stubbed communication layer (a fake object that simulates real network 
+    communication). When Player A defeats a zombie, verify that Player B's 
+    client updates to reflect the zombie's removal.
 
     \item On each target platform build, run the following smoke test:
     launch $\rightarrow$ start/join session $\rightarrow$ combat event

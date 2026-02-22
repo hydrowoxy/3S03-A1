@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.21)  21 FEB 2026 21:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.21)  21 FEB 2026 21:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1216,6 +1216,11 @@ LaTeX Font Info:    Redeclaring math symbol \braceru on input line 1947.
 LaTeX Info: Redefining \overbrace on input line 1963.
 LaTeX Info: Redefining \underbrace on input line 1966.
 LaTeX Font Info:    Redeclaring math symbol \surd on input line 1980.
+) (C:\Program Files\MiKTeX\tex/latex/changepage\changepage.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count519
+\cp@tempcnt=\count520
+LaTeX Info: Redefining \checkoddpage on input line 59.
 )) (config.tex)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
@@ -1247,16 +1252,16 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
  (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count519
+\scratchcounter=\count521
 \scratchdimen=\dimen361
 \scratchbox=\box98
-\nofMPsegments=\count520
-\nofMParguments=\count521
+\nofMPsegments=\count522
+\nofMParguments=\count523
 \everyMPshowfont=\toks62
-\MPscratchCnt=\count522
+\MPscratchCnt=\count524
 \MPscratchDim=\dimen362
-\MPnumerator=\count523
-\makeMPintoPDFobject=\count524
+\MPnumerator=\count525
+\makeMPintoPDFobject=\count526
 \everyMPtoPDFconversion=\toks63
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1341,8 +1346,11 @@ Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
 Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-\c@lstlisting=\count525
+\c@lstlisting=\count527
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: changepage package is loaded.
+\caption@adjustwidth@hsize=\dimen363
+\caption@adjustwidth@linewidth=\dimen364
 Package caption Info: picinpar package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (meta/title.tex
@@ -1410,62 +1418,57 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1
 
 {C:/Users/salee/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]) (content.tex
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 39.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 38.
  (C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.52     \item S
-                ave/load restores correct state. [1{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
-Overfull \hbox (4.8279pt too wide) in paragraph at lines 96--97
-[]\T1/lmr/bx/n/12 Purpose: \T1/lmr/m/n/12 En-sure the game works cor-rectly across very dif-fer-ent hard-ware en-vi-ron-ments. 
- []
-
-[2] [3] [4]
+l.58 \textbf{Purpose:}
+                       Ensure the game runs smoothly under load. [1{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [2] [3] [4]
 LaTeX Font Info:    Font shape `U/FdSymbolA/m/n' will be
-(Font)              scaled to size 12.0pt on input line 235.
+(Font)              scaled to size 12.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolA/m/n' will be
-(Font)              scaled to size 9.0pt on input line 235.
+(Font)              scaled to size 9.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolA/m/n' will be
-(Font)              scaled to size 7.0pt on input line 235.
+(Font)              scaled to size 7.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolE/m/n' will be
-(Font)              scaled to size 12.0pt on input line 235.
+(Font)              scaled to size 12.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolE/m/n' will be
-(Font)              scaled to size 9.0pt on input line 235.
+(Font)              scaled to size 9.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolE/m/n' will be
-(Font)              scaled to size 7.0pt on input line 235.
+(Font)              scaled to size 7.0pt on input line 237.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 235.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 237.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 235.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 237.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 235.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolB/m/n' will be
-(Font)              scaled to size 12.0pt on input line 235.
+(Font)              scaled to size 12.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolB/m/n' will be
-(Font)              scaled to size 9.0pt on input line 235.
+(Font)              scaled to size 9.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolB/m/n' will be
-(Font)              scaled to size 7.0pt on input line 235.
+(Font)              scaled to size 7.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolC/m/n' will be
-(Font)              scaled to size 12.0pt on input line 235.
+(Font)              scaled to size 12.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolC/m/n' will be
-(Font)              scaled to size 9.0pt on input line 235.
+(Font)              scaled to size 9.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolC/m/n' will be
-(Font)              scaled to size 7.0pt on input line 235.
+(Font)              scaled to size 7.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolD/m/n' will be
-(Font)              scaled to size 12.0pt on input line 235.
+(Font)              scaled to size 12.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolD/m/n' will be
-(Font)              scaled to size 9.0pt on input line 235.
+(Font)              scaled to size 9.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolD/m/n' will be
-(Font)              scaled to size 7.0pt on input line 235.
+(Font)              scaled to size 7.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 235.
+(Font)              scaled to size 12.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 235.
+(Font)              scaled to size 9.0pt on input line 237.
 LaTeX Font Info:    Font shape `U/FdSymbolF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 235.
+(Font)              scaled to size 7.0pt on input line 237.
 ) [5] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -1478,15 +1481,15 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39143 strings out of 467871
- 705489 string characters out of 5428443
- 1517718 words of memory out of 5000000
- 67356 multiletter control sequences out of 15000+600000
+ 39198 strings out of 467871
+ 706600 string characters out of 5428443
+ 1518510 words of memory out of 5000000
+ 67407 multiletter control sequences out of 15000+600000
  699349 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  137i,12n,156p,1251b,1785s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\salee\AppData\Local\MiKTeX\fonts/pk/ljfour/public/fdsymbol/dpi720\FdSymbolC-Book.pk><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (6 pages, 193612 bytes).
+Output written on main.pdf (6 pages, 194351 bytes).
 PDF statistics:
  127 PDF objects out of 1000 (max. 8388607)
  25 named destinations out of 1000 (max. 500000)
