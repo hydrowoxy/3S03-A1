@@ -308,7 +308,19 @@ Evaluating \texttt{x.length} in the loop initialization throws a
 is evaluated; the faulty condition is never executed.
 
 \subsubsection{c)}
-fewfw
+The fault is executed when the loop condition \texttt{i > 0} is evaluated.
+For inputs where the last occurrence of \texttt{y} is at an index \texttt{i > 0},
+the faulty condition does not alter the control flow of the program.
+The method returns before reaching index 0, so the execution path is identical
+to that of the corrected implementation. Therefore, no error state is reached.
+
+A test case that executes the fault but does not result in an error state is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{x = [1,2,3]; y = 2; Expected = 1}.   
+
+}\end{adjustwidth}
+
 \subsubsection{d)}
 fewfe
 \subsubsection{e)}
