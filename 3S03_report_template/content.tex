@@ -359,7 +359,7 @@ Using the given test as an example:
 
     We pass \texttt{x = [0,1,0]} looking for the last index where \texttt{x[i] == 0}. 
 
-    \texttt{x.length = 3}
+    \texttt{x.length = 3}, so the loop runs for \texttt{i = 0,1,2}.
 
     The loop starts with \texttt{i = 0 < 3} and checks if \texttt{x[0] == 0}.
 
@@ -527,7 +527,7 @@ A test case that executes the fault but does not result in an error state does n
     The only input value for which the faulty predicate behaves differently
     from the corrected predicate (\texttt{x[i] > 0}) is \texttt{x[i] = 0}.
 
-    For any test case containing \texttt{0}, the faulty implementation increments
+    For any test case containing \texttt{0}, the fataulty implementation increments
     \texttt{count} when the corrected implementation would not. This immediately
     causes the internal state of the program to differ.
 
@@ -571,6 +571,81 @@ after processing index \texttt{2}.
 
 \subsection{Program 4}
 \subsubsection{a)}
+
+The method iterates through the array from index \texttt{0} to
+\texttt{x.length - 1} and increments \texttt{count} whenever the condition
+
+\texttt{x[i] \% 2 == 1 || x[i] > 0}
+
+is true. The intention of the method is to count elements that are
+either odd or positive (or both). However, the condition
+\texttt{x[i] \% 2 == 1} incorrectly identifies odd numbers, because
+negative odd integers do not satisfy \texttt{x[i] \% 2 == 1} in Java.
+
+Using the given test as an example:
+
+\begin{adjustwidth}{2em}{0pt}{
+
+    We pass \texttt{x = [-3, -2, 0, 1, 4]}.
+
+    \texttt{x.length = 5}, so the loop runs for \texttt{i = 0,1,2,3,4}.
+
+    The method initializes \texttt{count = 0}.
+
+    At \texttt{i = 0}, it checks if  
+    \texttt{x[0] \% 2 == 1 || x[0] > 0}.
+
+    \texttt{x[0] = -3}. In Java, \texttt{-3 \% 2 == -1}, so  
+    \texttt{-3 \% 2 == 1} is false.  
+    \texttt{-3 > 0} is also false.  
+
+    Therefore, the condition evaluates to false and \texttt{count}
+    remains \texttt{0}.  
+
+    This is incorrect because \texttt{-3} is odd and should be counted.
+
+    At \texttt{i = 1}, \texttt{x[1] = -2}.  
+    \texttt{-2 \% 2 == 1} is false and \texttt{-2 > 0} is false,  
+    so \texttt{count} remains \texttt{0}.
+
+    At \texttt{i = 2}, \texttt{x[2] = 0}.  
+    \texttt{0 \% 2 == 1} is false and \texttt{0 > 0} is false,  
+    so \texttt{count} remains \texttt{0}.
+
+    At \texttt{i = 3}, \texttt{x[3] = 1}.  
+    \texttt{1 \% 2 == 1} is true, so \texttt{count} is incremented to \texttt{1}.
+
+    At \texttt{i = 4}, \texttt{x[4] = 4}.  
+    \texttt{4 \% 2 == 1} is false, but \texttt{4 > 0} is true,  
+    so \texttt{count} is incremented to \texttt{2}.
+
+    The loop terminates after \texttt{i = 4} and the method returns
+    \texttt{count = 2}.
+
+    The correct number of elements that are odd or positive is \texttt{3}
+    (\texttt{-3}, \texttt{1}, and \texttt{4}), so the method fails by
+    returning \texttt{2}.
+
+}\end{adjustwidth}
+
+Fault:
+
+\begin{adjustwidth}{2em}{0pt}{
+
+    The fault is in the expression \texttt{x[i] \% 2 == 1}, which
+    does not correctly detect negative odd numbers in Java.
+
+}\end{adjustwidth}
+
+Proposed modification to the code:
+
+
+\begin{adjustwidth}{2em}{0pt}{
+
+    Replace \texttt{x[i] \% 2 == 1} with \texttt{x[i] \% 2 != 0}
+    so that both positive and negative odd integers are correctly identified.
+
+}\end{adjustwidth}
 \subsubsection{b)}
 A test case that does not execute the fault is:
 \begin{adjustwidth}{2em}{0pt}{
