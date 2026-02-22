@@ -299,7 +299,7 @@ Proposed modification to the code:
 A test case that does not execute the fault is:
 \begin{adjustwidth}{2em}{0pt}{
 
-    \texttt{x = null; y = 1; Expected = NullPointerException}.   
+    \texttt{x = null; y = 1; Expected = NullPointerException}   
 
 }\end{adjustwidth}
 
@@ -311,7 +311,7 @@ is evaluated; the faulty condition is never executed.
 A test case that executes the fault but does not result in an error state is:
 \begin{adjustwidth}{2em}{0pt}{
 
-    \texttt{x = [1,2,3]; y = 2; Expected = 1}.   
+    \texttt{x = [1,2,3]; y = 2; Expected = 1}   
 
 }\end{adjustwidth}
 
@@ -325,7 +325,7 @@ to that of the corrected implementation. Therefore, no error state is reached.
 A test case that results in an error state but not a failure is:
 \begin{adjustwidth}{2em}{0pt}{
 
-    \texttt{x = [1,2,3]; y = 5; Expected = -1}.   
+    \texttt{x = [1,2,3]; y = 5; Expected = -1}   
 
 }\end{adjustwidth}
 
@@ -338,9 +338,8 @@ implementations correctly return \texttt{-1}, so no failure occurs.
 
 \subsubsection{e)}
 
-For the given test case \texttt{x = [2,3,5]; y = 2; Expected = 0}, the first error state
-occurs when \texttt{i = 0} and the loop condition \texttt{i > 0} evaluates to false.
-
+For the given test case, the first error state occurs when \texttt{i = 0} 
+and the loop condition \texttt{i > 0} evaluates to false.
 
 \begin{itemize}
     \item In the provided incorrect implementation, the loop terminates and the program 
@@ -354,23 +353,129 @@ decision at \texttt{i = 0}.
 
 \subsection{Program 2}
 \subsubsection{a)}
+The loop starts at index \texttt{0} and increments \texttt{i}, continuing as long as \texttt{i < x.length}.
+This means it checks the array from left to right. However, the method is supposed to return the
+\emph{last} index of \texttt{0}, while the current implementation returns immediately upon finding the
+\emph{first} \texttt{0}. Thus, it returns the wrong index whenever there is more than one zero in the array.
+
+Using the given test as an example:
+
+\begin{adjustwidth}{2em}{0pt}{
+
+    We pass \texttt{x = [0,1,0]} looking for the last index where \texttt{x[i] == 0}. 
+
+    \texttt{x.length = 3}
+
+    The loop starts with \texttt{i = 0 < 3} and checks if \texttt{x[0] == 0}.
+
+    \texttt{x[0] == 0} is true, so the method returns \texttt{i = 0} immediately.
+
+    This is incorrect because there is another \texttt{0} later in the array at index \texttt{2},
+    so the expected result is \texttt{2}, not \texttt{0}.
+
+}\end{adjustwidth}
+
+Fault:
+\begin{adjustwidth}{2em}{0pt}{
+
+    The fault is the premature return inside the loop: the method returns the first index
+    \texttt{i} such that \texttt{x[i] == 0}, instead of searching the entire array for the last
+    occurrence of \texttt{0}.
+
+}\end{adjustwidth}
+
+Proposed modification to the code:
+\begin{adjustwidth}{2em}{0pt}{
+
+    Iterate from the end of the array so that the first zero encountered is the last one, e.g.,
+    change the loop to:
+
+    \begin{verbatim}
+for (int i = x.length - 1; i >= 0; i--)
+    \end{verbatim}
+
+}\end{adjustwidth}
+
 \subsubsection{b)}
+A test case that does not execute the fault is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{test}   
+
+}\end{adjustwidth}
+
 \subsubsection{c)}
+A test case that executes the fault but does not result in an error state is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{test}   
+
+}\end{adjustwidth}
+
 \subsubsection{d)}
+A test case that results in an error state but not a failure is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{test}   
+
+}\end{adjustwidth}
+
 \subsubsection{e)}
 
 \subsection{Program 3}
 \subsubsection{a)}
 \subsubsection{b)}
+A test case that does not execute the fault is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{test}   
+
+}\end{adjustwidth}
+
 \subsubsection{c)}
+A test case that executes the fault but does not result in an error state is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{test}   
+
+}\end{adjustwidth}
+
 \subsubsection{d)}
+A test case that results in an error state but not a failure is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{test}   
+
+}\end{adjustwidth}
+
 \subsubsection{e)}
 
 \subsection{Program 4}
 \subsubsection{a)}
 \subsubsection{b)}
+A test case that does not execute the fault is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{test}   
+
+}\end{adjustwidth}
+
 \subsubsection{c)}
+A test case that executes the fault but does not result in an error state is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{test}   
+
+}\end{adjustwidth}
+
 \subsubsection{d)}
+A test case that results in an error state but not a failure is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{test}   
+
+}\end{adjustwidth}
+
 \subsubsection{e)}
 
 \section{Testing parts of large systems}
