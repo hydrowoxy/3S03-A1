@@ -296,7 +296,17 @@ Proposed modification to the code:
 }\end{adjustwidth}
 
 \subsubsection{b)}
-eqefqefe
+A test case that does not execute the fault is:
+\begin{adjustwidth}{2em}{0pt}{
+
+    \texttt{x = NULL; y = anything; Expected = NullPointerException}.   
+
+}\end{adjustwidth}
+
+Evaluating \texttt{x.length} in the loop initialization throws a 
+\texttt{NullPointerException} before the faulty loop condition \texttt{i > 0} 
+is evaluated; the faulty condition is never executed.
+
 \subsubsection{c)}
 fewfw
 \subsubsection{d)}
