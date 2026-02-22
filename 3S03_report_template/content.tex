@@ -432,7 +432,7 @@ Therefore, any error state caused by this fault necessarily results in a
 failure, and an error state without a failure cannot occur for this program.
 
 \subsubsection{e)}
-For the given test case \texttt{x = [0,1,0]; Expected = 2}, the first error state 
+For the given test case, the first error state 
 occurs at \texttt{i = 0} when the condition \texttt{x[0] == 0} evaluates to true 
 and the method takes the \texttt{return i} branch. At this point, the program 
 counter exits the loop and returns \texttt{0}, whereas a correct implementation 
@@ -503,37 +503,71 @@ Proposed modification to the code:
     \texttt{count}.
 
 }\end{adjustwidth}
+
 \subsubsection{b)}
 A test case that does not execute the fault is:
+
 \begin{adjustwidth}{2em}{0pt}{
 
-    \texttt{test}   
+    \texttt{x = null; Expected = NullPointerException}
 
 }\end{adjustwidth}
 
-Explanation
+Evaluating \texttt{x.length} in the loop header throws a
+\texttt{NullPointerException} before the faulty conditional \texttt{x[i] >= 0}
+is ever evaluated; the faulty condition is never executed.
 
 \subsubsection{c)}
-A test case that executes the fault but does not result in an error state is:
+A test case that executes the fault but does not result in an error state does not exist.
+
 \begin{adjustwidth}{2em}{0pt}{
 
-    \texttt{test}   
+    The fault is executed when the conditional \texttt{x[i] >= 0} is evaluated.
+
+    The only input value for which the faulty predicate behaves differently
+    from the corrected predicate (\texttt{x[i] > 0}) is \texttt{x[i] = 0}.
+
+    For any test case containing \texttt{0}, the faulty implementation increments
+    \texttt{count} when the corrected implementation would not. This immediately
+    causes the internal state of the program to differ.
+
+    Therefore, executing the fault necessarily produces an error state, and no
+    such test case exists.
 
 }\end{adjustwidth}
-
-Explanation
 
 \subsubsection{d)}
-A test case that results in an error state but not a failure is:
+A test case that results in an error state but not a failure does not exist.
+
 \begin{adjustwidth}{2em}{0pt}{
 
-    \texttt{test}   
+    The only way to reach an error state is for the array to contain
+    \texttt{0}. When \texttt{x[i] = 0}, the faulty predicate
+    \texttt{x[i] >= 0} evaluates to true and increments \texttt{count},
+    whereas the corrected implementation (with \texttt{x[i] > 0})
+    would not increment \texttt{count}.
+
+    At that point, the value of \texttt{count} differs between the two
+    implementations, so an error state has been reached.
+
+    Since \texttt{count} is only incremented and never corrected later in
+    the execution, the final returned value must also differ from the
+    corrected implementation. Therefore, once an error state occurs,
+    a failure is unavoidable.
 
 }\end{adjustwidth}
 
-Explanation
-
 \subsubsection{e)}
+
+For the given test case, the first error state occurs when \texttt{i = 2}
+and the conditional \texttt{x[i] >= 0} evaluates to true for \texttt{x[2] = 0}. 
+At this point in the incorrect implementation, \texttt{count} is incremented
+from \texttt{1} to \texttt{2}. In the corrected implementation (with
+\texttt{x[i] > 0}), the condition would evaluate to false and \texttt{count}
+would remain \texttt{1}.
+
+Therefore, the first error state is the incorrect state of \texttt{count = 2}
+after processing index \texttt{2}.
 
 \subsection{Program 4}
 \subsubsection{a)}
