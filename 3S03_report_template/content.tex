@@ -183,10 +183,10 @@ program, test case, or test suite exercises: this helps us understand when testi
 sufficient. The AI response provides no guidance on how to determine when testing is
 adequate. 
 
-This is unhelpful because it provides no guidance on how to organize the tests for 
-fast feedback and effective fault isolation. We have no idea what makes tests 
-"good enough" using the AI's suggestions, and thus no way to know when to stop 
-testing or how to prioritize test cases.
+This is unhelpful because it provides no way to judge when testing is sufficient 
+(or how to prioritize additional tests), so it is unclear when we should stop 
+testing or what parts of the program's behaviour remain unexercised. 
+We have no idea what makes tests "good enough" using the AI's suggestions.
 
 \end{enumerate}
 
@@ -343,7 +343,7 @@ and the loop condition \texttt{i > 0} evaluates to false. In the provided incorr
 implementation, the loop terminates and the program counter exits the loop body, whereas 
 in the corrected implementation (with \texttt{i >= 0}) the program counter would enter the loop and check \texttt{x[0]}. 
 
-Thus, the first error state is the incorrect control-flow
+Therefore, the first error state is the incorrect control-flow
 decision at \texttt{i = 0}.
 
 \subsection{Program 2}
@@ -382,8 +382,8 @@ Fault:
 Proposed modification to the code:
 \begin{adjustwidth}{2em}{0pt}{
 
-    Iterate from the end of the array so that the first zero encountered is the last one, e.g.,
-    change the loop to:
+    Iterate from the end of the array so that the first zero encountered is the last one.
+    Change the loop to:
 
     \begin{verbatim}
 for (int i = x.length - 1; i >= 0; i--)
@@ -527,7 +527,7 @@ A test case that executes the fault but does not result in an error state does n
     The only input value for which the faulty predicate behaves differently
     from the corrected predicate (\texttt{x[i] > 0}) is \texttt{x[i] = 0}.
 
-    For any test case containing \texttt{0}, the fataulty implementation increments
+    For any test case containing \texttt{0}, the faulty implementation increments
     \texttt{count} when the corrected implementation would not. This immediately
     causes the internal state of the program to differ.
 
@@ -646,31 +646,67 @@ Proposed modification to the code:
     so that both positive and negative odd integers are correctly identified.
 
 }\end{adjustwidth}
+
 \subsubsection{b)}
 A test case that does not execute the fault is:
+
 \begin{adjustwidth}{2em}{0pt}{
 
-    \texttt{test}   
+    \texttt{x = null; Expected = NullPointerException}
 
 }\end{adjustwidth}
+
+Evaluating \texttt{x.length} in the loop header throws a
+\texttt{NullPointerException} before the faulty conditional
+\texttt{x[i] \% 2 == 1 || x[i] > 0} is evaluated; the faulty
+predicate is never executed.
 
 \subsubsection{c)}
 A test case that executes the fault but does not result in an error state is:
 \begin{adjustwidth}{2em}{0pt}{
 
-    \texttt{test}   
+    \texttt{x = [2,4,6]; Expected = 3}
 
 }\end{adjustwidth}
 
+The fault is executed when the conditional \texttt{x[i] \% 2 == 1} is evaluated.
+However, for an array containing only positive even integers, \texttt{x[i] \% 2 == 1}
+evaluates to false for every element in both the faulty implementation and the corrected
+implementation (which uses \texttt{x[i] \% 2 != 0}). The elements are still counted
+because \texttt{x[i] > 0} is true for each element, so the control flow and final
+\texttt{count} are identical in both implementations. Therefore, no error state is reached.
+
 \subsubsection{d)}
-A test case that results in an error state but not a failure is:
+A test case that results in an error state but not a failure does not exist.
+
 \begin{adjustwidth}{2em}{0pt}{
 
-    \texttt{test}   
+    The fault only affects the classification of negative odd integers.
+    For any test case containing a negative odd value (like \texttt{-3}),
+    the faulty predicate \texttt{x[i] \% 2 == 1} evaluates to false, whereas
+    the corrected predicate, \texttt{x[i] \% 2 != 0}, would evaluate to true.
+
+    This causes \texttt{count} to be smaller than it should be, producing an
+    error state. Since \texttt{count} is only incremented and never corrected later,
+    the final returned value must also be smaller than the correct value.
+
+    Therefore, any error state necessarily results in a failure, and no such test case exists.
 
 }\end{adjustwidth}
 
 \subsubsection{e)}
+
+For the given test case, the first error state occurs when \texttt{i = 0}
+and the conditional \texttt{x[i] \% 2 == 1 || x[i] > 0} is evaluated for
+\texttt{x[0] = -3}. In the provided incorrect implementation,
+\texttt{-3 \% 2 == 1} evaluates to false (since \texttt{-3 \% 2 == -1} in Java),
+and \texttt{-3 > 0} is also false, so the program does not increment
+\texttt{count}. In the corrected implementation (using \texttt{x[i] \% 2 != 0}),
+the oddness check would evaluate to true and the program would increment
+\texttt{count}.
+
+Therefore, the first error state is the incorrect state of \texttt{count = 0}
+after processing index \texttt{0}.
 
 \section{Testing parts of large systems}
 
