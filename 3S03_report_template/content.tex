@@ -9,12 +9,14 @@ The specific prompt I used was:
 
 \vspace{10pt}
 
-"Suppose I am developing an action-adventure game such that:
+Suppose I am developing an action-adventure game such that:
 a) players explore a post-apocalyptic version of McMaster University; b) up to eight players 
 may be accosted by zombies, mutated professors, angry Deans, killer squirrels, and more; c) 
 gameplay can be both competitive and cooperative; and d) the game will be released on the 
 PS5, Xbox Series X, Nintendo Switch and Sega Genesis (which is 16-bit and hasn't been 
-manufactured since 1997). Specify three types of tests for such a game."
+manufactured since 1997). 
+
+Specify three types of tests for such a game.
 
 \vspace{20pt}
 
@@ -23,7 +25,7 @@ which I removed (and re-formatted) so that my document would compile and be legi
 
 \vspace{10pt}
 
-"For a game like this — especially one that spans \textbf{modern consoles and a 16-bit relic like the Sega Genesis} — testing needs to cover functionality, performance, and platform constraints very carefully.
+For a game like this — especially one that spans \textbf{modern consoles and a 16-bit relic like the Sega Genesis} — testing needs to cover functionality, performance, and platform constraints very carefully.
 
 Here are \textbf{three distinct and appropriate types of testing}:
 
@@ -150,7 +152,36 @@ The three appropriate testing types are:
     \item \textbf{Compatibility/Platform Testing} – Does it work properly across PS5, Xbox, Switch, and Genesis?
 \end{enumerate}
 
-Given the extreme hardware diversity (especially including a 1990s 16-bit console), \textbf{platform compatibility testing would be especially critical} for this project."
+Given the extreme hardware diversity (especially including a 1990s 16-bit console), 
+\textbf{platform compatibility testing would be especially critical} for this project.
+
+\subsection{b)} Two poor, incorrect, or unclear aspects of the response are:
+
+\begin{enumerate}
+\item Tests are categorized by domain (functional, performance, compatibility) 
+but not granularity (unit vs integration vs system).
+
+We have seen in class that unit and integration testing are often conflated. This is
+bad because the distinction is important for understanding feedback speed, debugging 
+difficulty, and test design. The AI response not only fails to make this distinction,
+but also fails to even mention unit testing; it is unclear whether the tests it suggests
+are to be implemented as unit, integration or system tests (though it seems the AI is
+relying only on system-level tests based on the descriptions provided). This is a 
+significant omission, as unit tests are crucial for verifying the correctness of 
+individual components in isolation.
+
+\item No measurable adequacy criteria are provided for any of the tests.
+
+Adequacy criteria such as statement, branch, or MC/DC coverage are completely omitted. 
+Coverage is defined as a way to measure a proportion of the structure or domain that a 
+program, test case, or test suite exercises: this helps us understand when testing is
+sufficient. The AI response provides no guidance on how to determine when testing is
+adequate. 
+
+\end{enumerate}
+
+
+
 
 \section{Testing with Junit}
 
