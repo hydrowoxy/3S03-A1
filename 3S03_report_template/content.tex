@@ -167,7 +167,11 @@ but also fails to even mention unit testing; it is unclear whether the tests it 
 are to be implemented as unit, integration or system tests (though it seems the AI is
 relying only on system-level tests based on the descriptions provided). This is a 
 significant omission, as unit tests are crucial for verifying the correctness of 
-individual components in isolation.
+individual components in isolation. 
+
+This is unhelpful because it does not indicate how the test suite should be structured 
+in practice or how trade-offs between speed, isolation, and scope should be managed. We
+have no idea how to best implement these tests in practice.
 
 \item No measurable adequacy criteria are provided for any of the tests.
 
@@ -176,6 +180,11 @@ Coverage is defined as a way to measure a proportion of the structure or domain 
 program, test case, or test suite exercises: this helps us understand when testing is
 sufficient. The AI response provides no guidance on how to determine when testing is
 adequate. 
+
+This is unhelpful because it provides no guidance on how to organize the tests for 
+fast feedback and effective fault isolation. We have no idea what makes tests 
+"good enough" using the AI's suggestions, and thus no way to know when to stop 
+testing or how to prioritize test cases.
 
 \end{enumerate}
 
