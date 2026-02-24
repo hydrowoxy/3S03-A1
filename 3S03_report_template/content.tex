@@ -639,7 +639,6 @@ Fault:
 
 Proposed modification to the code:
 
-
 \begin{adjustwidth}{2em}{0pt}{
 
     Replace \texttt{x[i] \% 2 == 1} with \texttt{x[i] \% 2 != 0}
@@ -706,10 +705,44 @@ the oddness check would evaluate to true and the program would increment
 \texttt{count}.
 
 Therefore, the first error state is the incorrect state of \texttt{count = 0}
-after processing index \texttt{0}.
+after processing index \texttt{0}. 
 
 \section{Testing parts of large systems}
+
+\subsection{a)}
+
+To decouple the agents' behaviour from the core game dynamics,
+I would ensure that the core module interacts with agents only through the
+\texttt{CatanAgent} interface, without depending on any specific implementation.
+
+The core module enforces the core game dynamics such as
+invoking agents when it is their turn, applying their actions,
+checking if actions are legal, updating the \texttt{GameState}, distributing resources,
+and enforcing trade/discard/other rules. 
+
+The agents are responsible only for
+selecting actions through methods such as \texttt{chooseMove},
+\texttt{chooseDiscard}, and \texttt{chooseResource}.
+
+Since the current goal is only to verify that agents \emph{can} execute
+these actions, not whether they choose useful actions, I would provide a simplified
+test double (specifically, a stub) of \texttt{CatanAgent} for testing purposes. 
+This implementation would return predictable, pre-scripted actions without
+any strategic logic (for example, always selecting the first legal move).
+
+This approach follows the testing principle of isolating the unit under test.
+By replacing complex agent logic with a simple test implementation,
+the core module can be tested independently of any learning or strategic
+behaviour. This ensures that failures during testing reflect problems in the
+core game dynamics rather than in the agents' decision-making logic.
+
+\subsection{b)}
+
+\subsection{c)}
+
+\subsection{d)}
 
 \section{Test driven development (TDD)}
 
 \section{Test coverage and AI}
+ 
