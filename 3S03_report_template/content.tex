@@ -738,6 +738,61 @@ core game dynamics rather than in the agents' decision-making logic.
 
 \subsection{b)}
 
+\begin{verbatim}
+public class StubAgent implements CatanAgent {
+
+    private int playerId;
+
+    @Override
+    public void init(int playerId) {
+        this.playerId = playerId;
+    }
+
+    @Override
+    public Move chooseInitialSettlement(GameState state) {
+        // Assuming new Move() creates a valid default move 
+        return new Move();
+    }
+
+    @Override
+    public Move chooseInitialRoad(GameState state) {
+        return new Move();
+    }
+
+    @Override
+    public Move chooseMove(GameState state) {
+        return new Move();
+    }
+
+    @Override
+    public Map<ResourceType, Integer> chooseDiscard(
+            GameState state, int discardCount) {
+
+        // Empty discard map for testing
+        return new HashMap<>();
+    }
+
+    @Override
+    public ResourceType chooseResource(GameState state) {
+        return ResourceType.BRICK;
+    }
+
+    @Override
+    public int chooseRobberTarget(
+            GameState state, List<Integer> possibleTargets) {
+
+        // Assuming for testing that possibleTargets is non-empty
+        // and contains valid player IDs
+        return possibleTargets.get(0);
+    }
+
+    @Override
+    public DevelopmentCard chooseDevelopmentCard(GameState state) {
+        return null;
+    }
+}
+\end{verbatim}
+
 \subsection{c)}
 
 \subsection{d)}
