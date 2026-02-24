@@ -795,7 +795,40 @@ public class StubAgent implements CatanAgent {
 
 \subsection{c)}
 
+Other solutions include:
+\begin{itemize}
+    \item Implement simple rule-based decision logic for agents, and use this during early testing.
+    \item Capture a sequence of agent decisions from a run and replay them deterministically as regression tests.
+    \item Rely primarily on end-to-end system tests (run full games with real agents) once all components exist.
+\end{itemize}
+
+A solution I would anticipate from a developer unfamiliar with test doubles and isolation is to
+implement the learning agent first and then test the system by running full 
+games end-to-end, attempting to break things at the system level and debugging issues as they appear.
+
+Points against that approach and in favor of using a stub test double:
+\begin{enumerate}
+    \item End-to-end failures do not clearly indicate whether the defect is in the core 
+    game dynamics or in the agent logic. Since the stub has minimal logic and
+    predictable behaviour, any failures during testing can be confidently
+    attributed to the core dynamics rather than the agent's decision-making.
+    \item Learning-based or complex agents may behave differently across runs, making 
+    failures hard to reproduce. A stub provides deterministic, repeatable behaviour, 
+    which is crucial for automated regression testing.
+    \item Full-game system tests are slower to run and harder to set up than focused 
+    tests of the core module. Isolated tests with test doubles provide faster feedback 
+    during development and can be run frequently.
+    \item With end-to-end gameplay, important edge cases may not occur reliably. 
+    With a stub agent, tests can deliberately trigger specific actions and scenarios
+    to ensure the core dynamics are exercised to a sufficient degree of coverage.
+\end{enumerate}
+
 \subsection{d)}
+If no one on the team is familiar with test doubles/isolation, I would treat it as a
+process and knowledge gap and address it directly.
+
+!!!research ceab stuff so u can quote it and explain how it gets addressed in ur answer!!!
+
 
 \section{Test driven development (TDD)}
 
