@@ -824,12 +824,78 @@ Points against that approach and in favor of using a stub test double:
 \end{enumerate}
 
 \subsection{d)}
-If no one on the team was familiar with test doubles/isolation, I would treat it as a
-process and knowledge gap and address it directly.
+If no one on the team knew about test doubles/isolation, I would seek to address
+the knowledge gap.
 
-!!!research ceab stuff so u can quote it and explain how it gets addressed in ur answer!!!
-!!!...cite ceab? idk or just say according to ceab we have a duty to x y z i do that here
-by doing x y z!!
+Specifically, I would do the following.
+
+\begin{enumerate}
+    \item Communicate the technical risk of the current testing approach.
+    
+    I would explain to the team that relying primarily on
+    end-to-end testing makes failures difficult to localize, introduces
+    non-determinism, slows feedback, and makes regression testing harder
+    to maintain. This increases project risk and
+    reduces confidence in the correctness of the core game dynamics.
+
+    \item Demonstrate the alternative approach.
+    
+    I would implement a small example test using a stub
+    \texttt{CatanAgent} to show how deterministic, isolated testing
+    improves fault localization and repeatability.
+
+    \item Provide practical adoption support.
+    
+    I would add a few representative stub-based tests to the codebase
+    as templates and document when isolated tests should be used versus
+    when full integration/system tests are appropriate.
+
+    \item Integrate the new approach into the development process.
+    
+    I would ensure these tests are incorporated into the automated
+    build or continuous integration process so that they are run
+    consistently.
+    
+\end{enumerate}
+
+This approach aligns with the CEAB Graduate Attributes (see 
+\href{https://engineerscanada.ca/sites/default/files/Graduate-Attributes.pdf}
+{\underbar{here}}) in the following ways:
+
+\begin{itemize}
+    \item \textbf{Communication skills:}
+    Engineers must "communicate complex engineering concepts within the 
+    profession and with society at large". By explaining the risks of poor testing
+    structure and proposing improvements, I fulfill this responsibility.
+
+    \item \textbf{Use of engineering tools:}
+    Engineers are expected to "create, select, apply, adapt, and extend appropriate
+    techniques, resources, and modern engineering tools to a range of engineering activities, from simple to
+    complex, with an understanding of the associated limitations".
+    Test doubles and isolated testing are recognized software
+    engineering techniques, and adopting them reflects responsible tool
+    selection.
+
+    \item \textbf{Professionalism:}
+    Engineers must understand "the roles and responsibilities of the professional engineer in
+    society, especially the primary role of protection of the public and the public interest". 
+    Improving testing practices reduces the likelihood of
+    defects in deployed systems, protecting the public interest.
+
+    \item \textbf{Life-long learning:}
+    Engineers must "identify and to address their own educational needs in a 
+    changing world in ways sufficient to maintain their competence and to allow 
+    them to contribute to the advancement of knowledge". 
+    Identifying a knowledge gap and helping the team adopt improved
+    practices demonstrates commitment to continuous learning.
+\end{itemize}
+
+This question relates directly to my engineering practice because it moves
+beyond solving a technical problem and into improving how a team works.
+In industry, I would need to communicate technical risks, justify process
+changes, and help others adopt better practices. Engineering practice
+demands collaboration, responsible tool selection, and continuous improvement,
+not just isolated technical competence.
 
 \section{Test driven development (TDD)}
 
