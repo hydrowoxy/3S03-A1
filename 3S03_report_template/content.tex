@@ -903,5 +903,178 @@ not just isolated technical competence.
 
 \section{Test driven development (TDD)}
 
+Note: for this question, the first iteration occurs in a-c, and the second in d-e.
+
+\subsection{a)}
+
+Following the TDD flow from class (write a failing test first), I would start by
+writing a small JUnit test suite that specifies the expected behaviour of
+\texttt{divide()} for: a) a normal case of division that yields a positive integer result,
+and, b) division by zero. Each test has a
+single clear assertion (one assert per test) and is fast, independent, and repeatable.
+
+\begin{verbatim}
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class DivideTests {
+
+    @Test
+    public void div_twoInts(){
+        Calculator c = new Calculator();
+        assertEquals(2.0, c.divide(6.0, 3.0), 1e-9);
+    }
+
+    @Test
+    public void div_byZero(){
+        Calculator c = new Calculator();
+        assertThrows(ArithmeticException.class, () -> c.divide(5.0, 0.0));
+    }
+}
+\end{verbatim}
+
+\subsection{b)}
+
+To make the tests pass, I implement only the functionality required by the
+current test suite.
+
+\begin{verbatim}
+public class Calculator {
+
+    public double divide(double a, double b){
+        if (b == 0.0) {
+            throw new ArithmeticException("Division by zero");
+        }
+        return a / b;
+    }
+}
+\end{verbatim}
+
+\subsection{c)}
+
+The current \texttt{divide()} implementation is sufficient to pass the initial
+tests, but the functionality is not complete from a testing/specification
+perspective.
+
+At this stage, the test suite specifies behaviour for only two situations:
+a typical division case that yields a positive integer quotient,
+and division by zero. Using the approach of
+considering input classes and boundaries, several relevant partitions are
+not explicitly exercised, such as:
+\begin{itemize}
+    \item negative dividend and/or negative divisor,
+    \item zero dividend ($0/x$),
+    \item divisions that yield non-integer results,
+    \item floating-point values near zero.
+\end{itemize}
+
+Although Java's built-in arithmetic will likely handle many of these correctly
+given the current implementation (\texttt{return a / b;}), that correctness is
+not guaranteed by the test suite. In other words, the tests do not yet define
+the full behavioural contract of \texttt{divide()} across these input classes,
+and therefore do not provide regression protection if the implementation later
+changes (if we added rounding, switched numeric types, or added special-case
+logic, for example). The current implementation also won't handle the near-zero 
+case correctly.
+
+Compared to a non-TDD approach, I would likely have tried to account for more
+cases up front in the implementation. Under TDD, the implementation grows only
+as far as the tests specify, so missing tests correspond to missing explicit
+behavioural guarantees.
+
+\subsection{d)}
+
+Based on the missing partitions identified in (c), I improve the test suite
+by adding representative cases for additional input classes and boundary-related
+situations, including floating-point values near zero.
+
+\begin{verbatim}
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class DivideTests {
+
+    @Test
+    public void div_twoInts(){
+        Calculator c = new Calculator();
+        assertEquals(2.0, c.divide(6.0, 3.0), 1e-9);
+    }
+
+    @Test
+    public void div_byZero(){
+        Calculator c = new Calculator();
+        assertThrows(ArithmeticException.class, () -> c.divide(5.0, 0.0));
+    }
+
+    @Test
+    public void div_negativeDividend(){
+        Calculator c = new Calculator();
+        assertEquals(-2.0, c.divide(-6.0, 3.0), 1e-9);
+    }
+
+    @Test
+    public void div_negativeDivisor(){
+        Calculator c = new Calculator();
+        assertEquals(-2.0, c.divide(6.0, -3.0), 1e-9);
+    }
+
+    @Test
+    public void div_zeroDividend(){
+        Calculator c = new Calculator();
+        assertEquals(0.0, c.divide(0.0, 5.0), 1e-9);
+    }
+
+    @Test
+    public void div_fractionalResult(){
+        Calculator c = new Calculator();
+        assertEquals(2.5, c.divide(5.0, 2.0), 1e-9);
+    }
+
+    @Test
+    public void div_nearZeroDivisor_throwsException(){
+        Calculator c = new Calculator();
+        assertThrows(ArithmeticException.class, () -> c.divide(1.0, 1e-15));
+    }
+}
+\end{verbatim}
+
+\subsection{e)}
+
+To satisfy the additional floating-point boundary test, I improve the
+division-by-zero guard to treat values sufficiently close to zero as zero.
+I have chosen \(1\times10^{-12}\) as a threshold for "near zero".
+
+\begin{verbatim}
+public class Calculator {
+
+    public double divide(double a, double b) {
+        if (Math.abs(b) < 1e-12) {
+            throw new ArithmeticException("Division by zero");
+        }
+        return a / b;
+    }
+}
+\end{verbatim}
+
+Yes, I would use TDD, but it depends on the task.
+
+I would use TDD for components with clearly defined input-output behaviour,
+such as business logic or utility methods. In those cases, writing the test
+first forces me to specify the behaviour precisely and gives immediate
+regression protection as the code evolves.
+
+I liked that tests act as a contract. The implementation grows
+incrementally and avoids overengineering, since I only write what is needed
+to satisfy the current test.
+
+The hardest part is knowing when the test suite is actually sufficient.
+As seen in this exercise, the first iteration passed all tests but still
+missed important input classes. Without consciously applying structured
+test design by thinking about partitions and boundaries, TDD can give
+a false sense of completeness.
+
+TDD is a helpful technique, but needs to be used in tandem with systematic test 
+design during the "reflection" phases.
+
 \section{Test coverage and AI}
  
