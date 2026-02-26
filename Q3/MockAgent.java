@@ -1,8 +1,13 @@
-
-// This implementation assumes that Move() takes two arguments, one for type
-// and one for position
-// And also that passing is a valid move type that requires no position 
-// argument
+/** 
+ * This implementation assumes that Move() takes two arguments, one for type
+ * and one for position
+ * And also that passing is a valid move type that requires no position 
+ * argument
+ * 
+ * I have commented out this class because 
+ * I do not want to see my screen light up red with an exorbitant amount of 
+ * red squiggly error lines
+ * There are lots of undefined objects after all
 
 public class MockAgent implements CatanAgent {
 
@@ -55,3 +60,4 @@ public class MockAgent implements CatanAgent {
         return null;
     }
 }
+*/
