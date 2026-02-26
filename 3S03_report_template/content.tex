@@ -726,7 +726,7 @@ selecting actions through methods such as \texttt{chooseMove},
 
 Since the current goal is only to verify that agents \emph{can} execute
 these actions, not whether they choose useful actions, I would provide a simplified
-test double (specifically, a stub) of \texttt{CatanAgent} for testing purposes. 
+test double/stub (specifically, a mock) of \texttt{CatanAgent} for testing purposes. 
 This implementation would return predictable, pre-scripted actions without
 any strategic logic (for example, always selecting the first legal move).
 
@@ -739,7 +739,7 @@ core game dynamics rather than in the agents' decision-making logic.
 \subsection{b)}
 
 \begin{verbatim}
-public class StubAgent implements CatanAgent {
+public class MockAgent implements CatanAgent {
 
     private int playerId;
 
@@ -1077,4 +1077,4 @@ TDD is a helpful technique, but needs to be used in tandem with systematic test
 design during the "reflection" phases.
 
 \section{Test coverage and AI}
- 
+
