@@ -899,12 +899,10 @@ This approach aligns with the CEAB Graduate Attributes (see
     practices demonstrates commitment to continuous learning.
 \end{itemize}
 
-This question relates directly to my engineering practice because it moves
-beyond solving a technical problem and into improving how a team works.
+Engineering practice demands collaboration, responsible tool selection, 
+and continuous improvement, not just isolated technical competence.
 In industry, I would need to communicate technical risks, justify process
-changes, and help others adopt better practices. Engineering practice
-demands collaboration, responsible tool selection, and continuous improvement,
-not just isolated technical competence.
+changes, and help others adopt better practices. 
 
 \section{Test driven development (TDD)}
 
@@ -919,9 +917,6 @@ and, b) division by zero. Each test has a
 single clear assertion (one assert per test) and is fast, independent, and repeatable.
 
 \begin{verbatim}
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
 public class DivideTests {
 
     @Test
@@ -952,6 +947,7 @@ public class Calculator {
         }
         return a / b;
     }
+
 }
 \end{verbatim}
 
@@ -994,9 +990,6 @@ by adding representative cases for additional input classes and boundary-related
 situations, including floating-point values near zero.
 
 \begin{verbatim}
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
 public class DivideTests {
 
     @Test
@@ -1058,6 +1051,7 @@ public class Calculator {
         }
         return a / b;
     }
+
 }
 \end{verbatim}
 
