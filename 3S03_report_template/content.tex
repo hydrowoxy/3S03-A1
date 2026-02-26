@@ -739,6 +739,11 @@ core game dynamics rather than in the agents' decision-making logic.
 \subsection{b)}
 
 \begin{verbatim}
+// This implementation assumes that Move() takes two arguments, one for type
+// and one for position
+// And also that passing is a valid move type that requires no position 
+// argument
+
 public class MockAgent implements CatanAgent {
 
     private int playerId;
@@ -750,18 +755,17 @@ public class MockAgent implements CatanAgent {
 
     @Override
     public Move chooseInitialSettlement(GameState state) {
-        // Assuming new Move() creates a valid default move 
-        return new Move();
+        return new Move("Settlement",0);
     }
 
     @Override
     public Move chooseInitialRoad(GameState state) {
-        return new Move();
+        return new Move("Road",0);
     }
 
     @Override
     public Move chooseMove(GameState state) {
-        return new Move();
+        return new Move("Pass");
     }
 
     @Override
@@ -791,6 +795,7 @@ public class MockAgent implements CatanAgent {
         return null;
     }
 }
+
 \end{verbatim}
 
 \subsection{c)}

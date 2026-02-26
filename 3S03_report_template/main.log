@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.21)  26 FEB 2026 14:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.21)  26 FEB 2026 14:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1470,7 +1470,7 @@ LaTeX Font Info:    Font shape `U/FdSymbolF/m/n' will be
 LaTeX Font Info:    Font shape `U/FdSymbolF/m/n' will be
 (Font)              scaled to size 7.0pt on input line 237.
  [5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
-Overfull \hbox (10.40862pt too wide) in paragraph at lines 861--864
+Overfull \hbox (10.40862pt too wide) in paragraph at lines 866--869
 []\T1/lmr/m/n/12 This ap-proach aligns with the CEAB Grad-u-ate At-tributes (see [][]$[]$[][]) in the fol-low-ing ways: 
  []
 
@@ -1494,7 +1494,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  137i,12n,156p,1251b,1785s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\salee\AppData\Local\MiKTeX\fonts/pk/ljfour/public/fdsymbol/dpi540\FdSymbolA-Book.pk> <C:\Users\salee\AppData\Local\MiKTeX\fonts/pk/ljfour/public/fdsymbol/dpi720\FdSymbolA-Book.pk> <C:\Users\salee\AppData\Local\MiKTeX\fonts/pk/ljfour/public/fdsymbol/dpi720\FdSymbolF-Book.pk> <C:\Users\salee\AppData\Local\MiKTeX\fonts/pk/ljfour/public/fdsymbol/dpi720\FdSymbolC-Book.pk><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (20 pages, 312116 bytes).
+Output written on main.pdf (20 pages, 312344 bytes).
 PDF statistics:
  380 PDF objects out of 1000 (max. 8388607)
  80 named destinations out of 1000 (max. 500000)
