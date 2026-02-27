@@ -1078,6 +1078,20 @@ design during the "reflection" phases.
 \section{Test coverage and AI}
 
 \subsection{a)}
+I instructed GenAI to produce tests for each class in the provied codebase.
+The AI produced two tests per class. Minor issues, such as incorrect enum values or imports, were 
+corrected manually before running the test suite.
+
+Test coverage was measured using JaCoCo. Branch coverage was chosen because 
+it is more comprehensive than line or statement coverage and requires 
+exercising different decision outcomes, which is more relevant to
+control flow than just executing each line.
+
+JaCoCo reported a branch coverage of 74\% with 20/27 branches covered and 7
+missed.
+
 \subsection{b)}
+
+
 \subsection{c)}
 \subsection{d)}
