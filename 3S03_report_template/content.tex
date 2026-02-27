@@ -726,7 +726,7 @@ selecting actions through methods such as \texttt{chooseMove},
 
 Since the current goal is only to verify that agents \emph{can} execute
 these actions, not whether they choose useful actions, I would provide a simplified
-test double/stub (specifically, a mock) of \texttt{CatanAgent} for testing purposes. 
+test double/stub of \texttt{CatanAgent} for testing purposes. 
 This implementation would return predictable, pre-scripted actions without
 any strategic logic (for example, always selecting the first legal move).
 
@@ -744,7 +744,7 @@ core game dynamics rather than in the agents' decision-making logic.
 // And also that passing is a valid move type that requires no position 
 // argument
 
-public class MockAgent implements CatanAgent {
+public class StubAgent implements CatanAgent {
 
     private int playerId;
 
@@ -1095,8 +1095,10 @@ missed.
 It took me about 30 minutes to reach >90\% branch coverage, and
 I eventually reached 92\% branch coverage (25/27 branches covered and 2 missed).
 
-I iteratively reviewed the coverage report to identify which classes and
-decision branches were not yet exercised. Based on this, I prompted GenAI
+I iteratively reviewed the coverage report to identify whether sufficient
+coverage had been reached. Then, I used my knowledge of the 
+codebase to determine where tests were lacking, prioritizing adding new tests
+to the the classes with more complicated control flows. Based on this, I prompted GenAI
 to generate targeted tests for specific files, refined the tests as needed,
 re-ran JaCoCo, and repeated the process until the desired coverage was achieved.
 

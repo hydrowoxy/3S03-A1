@@ -9,7 +9,7 @@
  * red squiggly error lines
  * There are lots of undefined objects after all
 
-public class MockAgent implements CatanAgent {
+public class StubAgent implements CatanAgent {
 
     private int playerId;
 
