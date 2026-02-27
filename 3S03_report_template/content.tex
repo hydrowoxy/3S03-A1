@@ -159,27 +159,26 @@ Given the extreme hardware diversity (especially including a 1990s 16-bit consol
 \subsection{b)} Two poor, incorrect, or unclear aspects of the response are:
 
 \begin{enumerate}
-\item Tests are categorized by type (functional, performance, compatibility) 
-but not granularity (unit, integration, system).
+\item Test granularity (unit, integration, system) is not specified.
 
 We have seen in class that unit and integration testing are often conflated. This is
 bad because the distinction affects feedback speed, debugging difficulty, and test design. 
 The AI response not only fails to make this distinction, but also fails to even mention 
 unit testing; it is unclear whether the tests it suggests are to be implemented as unit, 
 integration or system tests (though it seems the AI is relying only on system-level 
-tests based on the descriptions provided). This is a significant omission, as unit 
-tests are crucial for verifying the correctness of individual components in isolation. 
+tests based on the descriptions provided). Omitting unit tests is problematic because
+they are important for verifying individual components in isolation. 
 
 This is unhelpful because it does not indicate how the test suite should be structured 
 in practice or how trade-offs between speed, isolation, and scope should be managed. We
 have no idea how to best implement these tests in practice.
 
-\item No measurable adequacy criteria are provided for any of the tests.
+\item No adequacy criteria are provided.
 
 Adequacy criteria such as statement, branch, or MC/DC coverage are completely omitted. 
 Coverage is defined as a way to measure a proportion of the structure or domain that a 
 program, test case, or test suite exercises: this helps us understand when testing is
-sufficient. The AI response provides no guidance on how to determine when testing is
+sufficient. So, the AI response provides no guidance on how to determine when testing is
 adequate. 
 
 This is unhelpful because it provides no way to judge when testing is sufficient 
@@ -196,17 +195,16 @@ We have no idea what makes tests "good enough" using the AI's suggestions.
 
 The response lists performance issues, hardware constraints, and
 multiplayer load as potential failure sources. These issues typically
-emerge when multiple components interact or when the system is exercised
-in realistic operating conditions, rather than at the level of isolated
+emerge when multiple components interact, not at the level of isolated
 units.
 
 This is helpful because it acknowledges that some failures only become
-visible when the system is evaluated as a whole. We can use this to identify 
+visible when the system is exercised as a whole. We can use this to identify 
 system testing needs.
 
 \item Concrete examples of test cases are provided for each type of testing.
 
-The response includes specific example scenarios (eight players joining a
+The response includes example scenarios (eight players joining a
 session, friendly fire toggling, stress-testing large enemy swarms).
 Clear and expressive tests are valuable because they make expected behavior
 explicit and easier to reason about. By describing concrete scenarios rather
@@ -214,7 +212,7 @@ than only abstract test categories, the response clarifies the intended
 behaviors that should be exercised.
 
 This is helpful because clearer behavioral intent makes it easier to design
-tests that meaningfully verify system behavior. We can more directly translate
+tests that meaningfully verify the system. When given examples, we can more directly translate
 these scenarios into implementable test cases with well-defined expectations.
 
 \end{enumerate}
@@ -223,14 +221,11 @@ these scenarios into implementable test cases with well-defined expectations.
 
 \begin{enumerate}
     \item Given the combat damage logic with game mode set to cooperative,
-    verify that when Player A attacks Player B, Player B does not take damage; 
-    and when the session is switched to competitive mode, Player B does
-    take damage (covering both decision outcomes).
+    verify that when Player A attacks Player B, Player B does not take damage
 
     \item Simulate two players in the same multiplayer session using a
-    test double (stub/fake network transport object that simulates real network 
-    communication). When Player A defeats a zombie, verify that Player B's 
-    client updates to reflect the zombie's removal.
+    test double that simulates real network communication. When Player A defeats 
+    a zombie, verify that Player B's client updates to reflect the zombie's removal.
 
     \item On each target platform build, run the following smoke test:
     launch $\rightarrow$ start/join session $\rightarrow$ combat event
@@ -239,11 +234,9 @@ these scenarios into implementable test cases with well-defined expectations.
 
 \end{enumerate}
 
-I prefer these tests because they explicitly cover unit, integration, and system
-granularity while including a measurable adequacy goal (exercising both decision outcomes)
-for core logic. This results in fast, deterministic tests for core gameplay defects 
-while keeping broad smoke tests to catch platform-specific and full-system 
-failures.
+I prefer these tests because they are specific, expressive, and
+explicitly cover unit, integration, and system
+granularity.
 
 \section{Testing with Junit}
 
@@ -710,24 +703,12 @@ after processing index \texttt{0}.
 
 \subsection{a)}
 
-To decouple the agents' behaviour from the core game dynamics,
-I would ensure that the core module interacts with agents only through the
-\texttt{CatanAgent} interface, without depending on any specific implementation.
-
-The core module enforces the core game dynamics such as
-invoking agents when it is their turn, applying their actions,
-checking if actions are legal, updating the \texttt{GameState}, distributing resources,
-and enforcing trade/discard/other rules. 
-
-The agents are responsible only for
-selecting actions through methods such as \texttt{chooseMove},
-\texttt{chooseDiscard}, and \texttt{chooseResource}.
-
 Since the current goal is only to verify that agents \emph{can} execute
-these actions, not whether they choose useful actions, I would provide a simplified
+their actions, not whether they choose useful actions, I would decouple the
+agents' behaviur from the core dynamics by using a simplified
 test double/stub of \texttt{CatanAgent} for testing purposes. 
 This implementation would return predictable, pre-scripted actions without
-any strategic logic (for example, always selecting the first legal move).
+any strategic logic (for example, always passing on their turn).
 
 This approach follows the testing principle of isolating the unit under test.
 By replacing complex agent logic with a simple test implementation,
@@ -802,8 +783,8 @@ public class StubAgent implements CatanAgent {
 Other solutions include:
 \begin{itemize}
     \item Implement simple rule-based decision logic for agents, and use this during early testing.
-    \item Capture a sequence of agent decisions from a run and replay them deterministically as regression tests.
-    \item Rely primarily on end-to-end system tests (run full games with real agents) once all components exist.
+    \item Capture a sequence of agent decisions from a run and replay them as regression tests.
+    \item Rely on end-to-end system tests (run full games with real agents) once all components exist.
 \end{itemize}
 
 A solution I would anticipate from a developer unfamiliar with test doubles and isolation is to
@@ -817,14 +798,12 @@ Points against that approach and in favor of using a stub test double:
     predictable behaviour, any failures during testing can be confidently
     attributed to the core dynamics rather than the agent's decision-making.
     \item Learning-based or complex agents may behave differently across runs, making 
-    failures hard to reproduce. A stub provides deterministic, repeatable behaviour, 
-    which is crucial for automated regression testing.
+    failures hard to reproduce. A stub provides deterministic, repeatable behaviour.
     \item Full-game system tests are slower to run and harder to set up than focused 
-    tests of the core module. Isolated tests with test doubles provide faster feedback 
-    during development and can be run frequently.
+    narrow tests of core logic only. Isolated tests with test doubles are quick,
+    leading to faster feedback during development and more frequent testing.
     \item With end-to-end gameplay, important edge cases may not occur reliably. 
-    With a stub agent, tests can deliberately trigger specific actions and scenarios
-    to ensure the core dynamics are exercised to a sufficient degree of coverage.
+    With a stub agent, tests can deliberately trigger specific cases.
 \end{enumerate}
 
 \subsection{d)}
@@ -834,31 +813,17 @@ the knowledge gap.
 Specifically, I would do the following.
 
 \begin{enumerate}
-    \item Communicate the technical risk of the current testing approach.
-    
-    I would explain to the team that relying primarily on
-    end-to-end testing makes failures difficult to localize, introduces
-    non-determinism, slows feedback, and makes regression testing harder
-    to maintain. This increases project risk and
-    reduces confidence in the correctness of the core game dynamics.
-
-    \item Demonstrate the alternative approach.
-    
-    I would implement a small example test using a stub
-    \texttt{CatanAgent} to show how deterministic, isolated testing
-    improves fault localization and repeatability.
-
-    \item Provide practical adoption support.
-    
-    I would add a few representative stub-based tests to the codebase
-    as templates and document when isolated tests should be used versus
+    \item I would explain to the team that relying only on end-to-end testing is slow,
+    messy (any one of several integrated components could be causing failures),
+    non-deterministic (failures can be hard to reproduce), and hard to maintain 
+    as the system evolves. 
+    \item I would implement a small example test using a stub
+    to show how it supports fault isolation and makes tests repeatable.
+    \item I would add a few stub-based tests to the codebase
+    for reference. I would document when isolated tests should be used versus
     when full integration/system tests are appropriate.
-
-    \item Integrate the new approach into the development process.
-    
-    I would ensure these tests are incorporated into the automated
-    build or continuous integration process so that they are run
-    consistently.
+    \item I would ensure these tests are incorporated into the automated
+    build or CI process so that they are run frequently.
     
 \end{enumerate}
 
@@ -867,39 +832,30 @@ This approach aligns with the CEAB Graduate Attributes (see
 {\underbar{here}}) in the following ways:
 
 \begin{itemize}
-    \item Communication skills.
-    
-    Engineers must "communicate complex engineering concepts within the 
+    \item Engineers must "communicate complex engineering concepts within the 
     profession and with society at large". By explaining the risks of poor testing
     structure and proposing improvements, I fulfill this responsibility.
 
-    \item Use of engineering tools.
-    
-    Engineers are expected to "create, select, apply, adapt, and extend appropriate
+    \item Engineers are expected to "create, select, apply, adapt, and extend appropriate
     techniques, resources, and modern engineering tools to a range of engineering activities, from simple to
     complex, with an understanding of the associated limitations".
     Test doubles and isolated testing are recognized software
     engineering techniques, and adopting them reflects responsible tool
     selection.
 
-    \item Professionalism.
-    
-    Engineers must understand "the roles and responsibilities of the professional engineer in
+    \item Engineers must understand "the roles and responsibilities of the professional engineer in
     society, especially the primary role of protection of the public and the public interest". 
     Improving testing practices reduces the likelihood of
     defects in deployed systems, protecting the public interest.
 
-    \item Life-long learning.
-    
-    Engineers must "identify and to address their own educational needs in a 
+    \item Engineers must "identify and to address their own educational needs in a 
     changing world in ways sufficient to maintain their competence and to allow 
     them to contribute to the advancement of knowledge". 
     Identifying a knowledge gap and helping the team adopt improved
     practices demonstrates commitment to continuous learning.
 \end{itemize}
 
-Engineering practice demands collaboration, responsible tool selection, 
-and continuous improvement, not just isolated technical competence.
+Engineering practice involves collaboration and communication.
 In industry, I would need to communicate technical risks, justify process
 changes, and help others adopt better practices. 
 
@@ -912,8 +868,7 @@ Note: for this question, the first iteration occurs in a-c, and the second in d-
 Following the TDD flow from class (write a failing test first), I would start by
 writing a small JUnit test suite that specifies the expected behaviour of
 \texttt{divide()} for: a) a normal case of division that yields a positive integer result,
-and, b) division by zero. Each test has a
-single clear assertion (one assert per test) and is fast, independent, and repeatable.
+and, b) division by zero. 
 
 \begin{verbatim}
 public class DivideTests {
@@ -953,40 +908,36 @@ public class Calculator {
 \subsection{c)}
 
 The current \texttt{divide()} implementation is sufficient to pass the initial
-tests, but the functionality is not complete from a testing/specification
-perspective.
+tests, but the functionality is not complete.
 
-At this stage, the test suite specifies behaviour for only two situations:
-a typical division case that yields a positive integer quotient,
-and division by zero. Using the approach of
-considering input classes and boundaries, several relevant partitions are
-not explicitly exercised, such as:
+The test suite specifies behaviour for only two situations.
+Several relevant partitions are
+not exercised, such as:
 \begin{itemize}
-    \item negative dividend and/or negative divisor,
+    \item negative dividend,
+    \item negative divisor,
     \item zero dividend ($0/x$),
     \item divisions that yield non-integer results,
     \item floating-point values near zero.
 \end{itemize}
 
-Although Java's built-in arithmetic will likely handle many of these correctly
-given the current implementation (\texttt{return a / b;}), that correctness is
-not guaranteed by the test suite. In other words, the tests do not yet define
-the full behavioural contract of \texttt{divide()} across these input classes,
-and therefore do not provide regression protection if the implementation later
+Although Java's built-in arithmetic will likely handle most of these correctly, 
+that correctness is
+not guaranteed by the test suite. The tests do not yet define
+the full behavioural contract of \texttt{divide()},
+and therefore do not provide regression protection if the implementation
 changes (if we added rounding, switched numeric types, or added special-case
-logic, for example). The current implementation also won't handle the near-zero 
-case correctly.
+logic, for example).
 
-Compared to a non-TDD approach, I would likely have tried to account for more
-cases up front in the implementation. Under TDD, the implementation grows only
-as far as the tests specify, so missing tests correspond to missing explicit
-behavioural guarantees.
+Without TDD, I would likely think in terms of behaviour and I would've identified
+more of these edge cases up front. Under TDD, the implementation grows only
+as far as the tests specify, so missing tests mean missing
+behaviour.
 
 \subsection{d)}
 
-Based on the missing partitions identified in (c), I improve the test suite
-by adding representative cases for additional input classes and boundary-related
-situations, including floating-point values near zero.
+I improve the test suite by adding test cases for the missing 
+partitions identified in (c).
 
 \begin{verbatim}
 public class DivideTests {
@@ -1037,7 +988,7 @@ public class DivideTests {
 
 \subsection{e)}
 
-To satisfy the additional floating-point boundary test, I improve the
+To satisfy the additional floating-point test, I improve the
 division-by-zero guard to treat values sufficiently close to zero as zero.
 I have chosen \(1\times10^{-12}\) as a threshold for "near zero".
 
@@ -1056,23 +1007,25 @@ public class Calculator {
 
 Yes, I would use TDD, but it depends on the task.
 
-I would use TDD for components with clearly defined input-output behaviour,
-such as business logic or utility methods. In those cases, writing the test
+I would use TDD for components with clearly defined input-output behaviour. 
+In those cases, writing the test
 first forces me to specify the behaviour precisely and gives immediate
-regression protection as the code evolves.
+regression protection.
 
-I liked that tests act as a contract. The implementation grows
+I liked that tests act as a contract.  Once tests are identified,
+implementation is straightforward and already scoped.
+The implementation grows
 incrementally and avoids overengineering, since I only write what is needed
 to satisfy the current test.
 
 The hardest part is knowing when the test suite is actually sufficient.
 As seen in this exercise, the first iteration passed all tests but still
-missed important input classes. Without consciously applying structured
-test design by thinking about partitions and boundaries, TDD can give
+missed several input classes. Without consciously applying structured
+test design, TDD can give
 a false sense of completeness.
 
-TDD is a helpful technique, but needs to be used in tandem with systematic test 
-design during the "reflection" phases.
+TDD is a helpful technique, but needs to be used in tandem with thoughtful test 
+design strategies during the "reflection" phases.
 
 \section{Test coverage and AI}
 
@@ -1117,7 +1070,7 @@ A few key takeaways from this exercise are as follows:
 
 Human cognition is strong at interpreting coverage reports,
 reasoning about control flow, and strategically targeting uncovered
-branches with a holistic understanding of the entire codebase.
+branches with a holistic understanding of the codebase.
 GenAI is good at generating test code based on prompts, but it does 
 not have the contextual understanding or strategic insight to know 
 which tests are most valuable or necessary to achieve high coverage.
@@ -1128,7 +1081,7 @@ The primary goal would be improving context awareness and
 better integrating coverage analysis and test generation. 
 
 It was most tedious to communicate with AI, manually re-run coverage
-analysis, report back to the AI and iterate.
+analysis, report back to the AI and repeat.
 
 Rather than requiring manual interpretation
 of reports, the tool should automatically analyze coverage gaps and generate
@@ -1153,7 +1106,8 @@ low-quality, or misleading coverage. To mitigate this, workflows would
 need to enforce human validation and ensure that generated changes are
 clearly explainable and easy to review.
 
-Additionally, because such a tool would require access to the
-entire codebase, security and privacy concerns must be addressed.
-Organizations would need guarantees regarding data handling and
-confidentiality before integrating the tool into production.
+Because such a tool would require access to the part of the codebase
+being tested, security and privacy concerns must be addressed.
+Organizations would be hesitant to integrate the tool into
+production without guarantees regarding data handling and
+confidentiality.
