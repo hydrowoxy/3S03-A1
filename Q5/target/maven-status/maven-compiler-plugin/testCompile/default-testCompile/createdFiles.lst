@@ -1,0 +1,7 @@
+com\example\shop\OrderStatusTests.class
+com\example\shop\OrderItemTests.class
+com\example\shop\PaymentValidatorTests.class
+com\example\shop\DiscountServiceTests.class
+com\example\shop\OrderServiceTests.class
+com\example\shop\OrderTests.class
+com\example\shop\PricingServiceTests.class

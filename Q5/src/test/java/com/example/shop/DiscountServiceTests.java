@@ -19,4 +19,22 @@ class DiscountServiceTests {
         assertThrows(IllegalArgumentException.class,
                 () -> service.applyDiscount(100.0, "INVALID"));
     }
+
+    @Test
+    void blankDiscountCode_returnsSubtotal() {
+        double result = service.applyDiscount(100.0, "   ");
+        assertEquals(100.0, result);
+    }
+
+    @Test
+    void blackFridayDiscount_appliesThirtyPercent() {
+        double result = service.applyDiscount(100.0, "BLACKFRIDAY");
+        assertEquals(70.0, result);
+    }
+
+    @Test
+    void nullDiscountCode_returnsSubtotal() {
+        double result = service.applyDiscount(100.0, null);
+        assertEquals(100.0, result);
+    }
 }

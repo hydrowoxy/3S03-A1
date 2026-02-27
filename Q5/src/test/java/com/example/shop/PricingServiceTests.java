@@ -24,4 +24,9 @@ class PricingServiceTests {
         assertThrows(IllegalArgumentException.class,
                 () -> pricing.calculateTax(-0.01));
     }
+
+    @Test
+    void calculateTax_zeroSubtotal_returnsZero() {
+        assertEquals(0.0, pricing.calculateTax(0.0), 1e-9);
+    }
 }
