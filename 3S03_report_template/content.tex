@@ -1078,7 +1078,7 @@ design during the "reflection" phases.
 \section{Test coverage and AI}
 
 \subsection{a)}
-I instructed GenAI to produce tests for each class in the provied codebase.
+I instructed GenAI to produce tests for each class in the provided codebase.
 The AI produced two tests per class. Minor issues, such as incorrect enum values or imports, were 
 corrected manually before running the test suite.
 
@@ -1092,6 +1092,67 @@ missed.
 
 \subsection{b)}
 
+It took me about 30 minutes to reach >90\% branch coverage, and
+I eventually reached 92\% branch coverage (25/27 branches covered and 2 missed).
+
+I iteratively reviewed the coverage report to identify which classes and
+decision branches were not yet exercised. Based on this, I prompted GenAI
+to generate targeted tests for specific files, refined the tests as needed,
+re-ran JaCoCo, and repeated the process until the desired coverage was achieved.
+
+The AI played the role of the developer doing the dirty work while I felt more
+like a manager guiding the process.
 
 \subsection{c)}
+
+A few key takeaways from this exercise are as follows:
+
+\begin{enumerate}
+    \item GenAI is useful for quickly generating tests, but it cannot be relied on blindly
+    to generate a high-quality test suite with sufficient coverage.
+    \item GenAI requires thoughtful guidance and iteration to produce effective tests
+    \item Human guidance is necessary for interpretation and strategic decision-making
+\end{enumerate}
+
+Human cognition is strong at interpreting coverage reports,
+reasoning about control flow, and strategically targeting uncovered
+branches with a holistic understanding of the entire codebase.
+GenAI is good at generating test code based on prompts, but it does 
+not have the contextual understanding or strategic insight to know 
+which tests are most valuable or necessary to achieve high coverage.
+
 \subsection{d)}
+
+The primary goal would be improving context awareness and
+better integrating coverage analysis and test generation. 
+
+It was most tedious to communicate with AI, manually re-run coverage
+analysis, report back to the AI and iterate.
+
+Rather than requiring manual interpretation
+of reports, the tool should automatically analyze coverage gaps and generate
+tests for specific uncovered branches.
+
+Key features would include:
+\begin{itemize}
+    \item Direct integration with coverage tools (like JaCoCo) to automatically
+    identify missed branches.
+    \item Context-aware reasoning over the entire codebase to consider
+    broader structure and dependencies when generating tests.
+    \item Transparent explanations of why a generated test targets a specific
+    branch, allowing the human developer to validate intent.
+    \item An interactive feedback loop where developers can accept, reject, or
+    refine suggested tests.
+\end{itemize}
+
+There are several challenges to consider before such a tool could be
+widely adopted. If the system generates large test suites automatically,
+developers may not thoroughly review each test, leading to redundant,
+low-quality, or misleading coverage. To mitigate this, workflows would
+need to enforce human validation and ensure that generated changes are
+clearly explainable and easy to review.
+
+Additionally, because such a tool would require access to the
+entire codebase, security and privacy concerns must be addressed.
+Organizations would need guarantees regarding data handling and
+confidentiality before integrating the tool into production.
